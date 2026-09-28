@@ -1,0 +1,370 @@
+/* ==========================================================================
+   Final registration (orange section with form)
+   ========================================================================== */
+
+.register {
+  position: relative;
+  border-radius: var(--radius-section);
+  background: var(--c-orange);
+  color: var(--c-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.register__lines {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 1000px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.register__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 72px;
+}
+
+/* Copy column */
+.register__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.register__title {
+  margin-top: 26px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.0417em;
+}
+
+.register__lead {
+  margin-top: 25px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+.register__meta {
+  margin-top: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.register__note {
+  align-self: stretch;
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+/* Form column */
+.register__side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 34px;
+  border-radius: 28px;
+  background: var(--c-white);
+  color: var(--c-dark);
+}
+
+.reg-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.field__label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--c-text);
+}
+
+.field__control {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid #d7d7d2;
+  border-radius: 8px;
+  background: var(--c-white);
+  font: inherit;
+  font-size: 15px;
+  color: var(--c-dark);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.field__control:hover {
+  border-color: #b9b9b3;
+}
+
+.field__control:focus {
+  outline: none;
+  border-color: var(--c-orange);
+  box-shadow: 0 0 0 3px rgba(217, 119, 16, 0.15);
+}
+
+.field__control:user-invalid {
+  border-color: #d64545;
+}
+
+/* Select with chevron */
+.field__select {
+  position: relative;
+}
+
+.field__select select {
+  appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.field__select select:invalid {
+  color: #9a9ca1;
+}
+
+.field__select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 7px;
+  height: 7px;
+  margin-top: -6px;
+  border-right: 1.5px solid #8b8d92;
+  border-bottom: 1.5px solid #8b8d92;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+/* Consent checkbox */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--c-text);
+  cursor: pointer;
+}
+
+.check input {
+  flex: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 1px solid #d7d7d2;
+  border-radius: 4px;
+  background: var(--c-white) center / 12px no-repeat;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.check input:checked {
+  border-color: var(--c-orange);
+  background-color: var(--c-orange);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.6 9.5 3.6' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.reg-form .btn {
+  align-self: flex-start;
+}
+
+.reg-form__legal {
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--c-text);
+}
+
+.reg-form__legal a:hover {
+  color: var(--c-orange);
+}
+
+.register__after {
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Spam trap: hidden from people, visible to bots */
+.reg-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.reg-form__error {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #d64545;
+}
+
+.reg-form.is-sending .btn {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Success state (replaces the form) */
+.reg-form__success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 34px;
+  border-radius: 28px;
+  background: var(--c-white);
+  color: var(--c-dark);
+}
+
+.reg-form__success[hidden] {
+  display: none;
+}
+
+.reg-form__success-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: #f4e2cd;
+  color: var(--c-orange);
+}
+
+.reg-form__success-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.reg-form__success-title {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.reg-form__success-text {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--c-text);
+}
+
+.reg-form[hidden] {
+  display: none;
+}
+
+/* ==========================================================================
+   Registration: tablet / mobile (copy, then the form)
+   ========================================================================== */
+@media (max-width: 1199px) {
+  .register {
+    padding-top: 68px;
+    padding-bottom: 64px;
+  }
+
+  .register__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .register__lines {
+    top: 320px;
+  }
+
+  /* comma is wider than the design's period: keep the 2-line title */
+  .register__title {
+    margin-top: 20px;
+    letter-spacing: -0.05em;
+  }
+
+  .register__lead,
+  .register__meta {
+    margin-top: 20px;
+  }
+
+  .register__note,
+  .register__after {
+    font-style: normal;
+  }
+
+  .reg-form__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .register {
+    padding: 48px var(--gutter) 24px;
+  }
+
+  .register__lines {
+    display: none;
+  }
+
+  .register__inner {
+    gap: 24px;
+  }
+
+  .register__title {
+    margin-top: 12px;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .register__lead {
+    margin-top: 16px;
+    letter-spacing: 0;
+  }
+
+  .register__meta {
+    margin-top: 16px;
+  }
+
+  .register__note {
+    margin-top: 16px;
+    padding-top: 16px;
+  }
+
+  .reg-form,
+  .reg-form__success {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .check {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .register__after {
+    font-size: 10.5px;
+  }
+}

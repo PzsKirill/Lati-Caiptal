@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Evaluation framework (7 check cards + note)
+   ========================================================================== */
+
+.framework {
+  border-radius: var(--radius-section) var(--radius-section) 0 0;
+  background: var(--c-bg);
+}
+
+.framework__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+
+.framework__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px;
+}
+
+.framework__col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.fw-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--c-white);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--c-dark);
+  transition: background-color 0.35s var(--ease), box-shadow 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+.fw-card__check {
+  flex: none;
+  display: grid;
+  place-items: center;
+  padding: 4.5px 6.5px;
+  border-radius: 333px;
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--c-orange);
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+.fw-card__check svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fw-card.is-active {
+  position: relative;
+  z-index: 1;
+  background: var(--c-orange);
+  box-shadow: 8px 42px 52px rgba(181, 63, 0, 0.4);
+  color: var(--c-white);
+}
+
+.fw-card.is-active .fw-card__check {
+  background: var(--c-white);
+  color: var(--c-dark);
+}
+
+.framework__note {
+  padding: 22px;
+  border: 1px solid #e0e1e2;
+  border-radius: 12px;
+  background: #ecedee;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.375;
+  letter-spacing: -0.02em;
+  color: var(--c-dark);
+}
+
+/* ==========================================================================
+   Framework: tablet / mobile (single column)
+   ========================================================================== */
+@media (max-width: 1199px) {
+
+  .framework__grid,
+  .framework__col {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .framework__inner {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section.framework .section-head__main {
+    gap: 16px;
+  }
+
+  .fw-card {
+    padding: 16px;
+  }
+
+  .fw-card.is-active {
+    box-shadow: none;
+  }
+
+  .framework__inner {
+    gap: 24px;
+  }
+}

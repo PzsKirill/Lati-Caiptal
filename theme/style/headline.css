@@ -1,0 +1,140 @@
+/* ==========================================================================
+   What is usually behind the headline yield (stacked bar + copy)
+   ========================================================================== */
+
+.headline {
+  background: var(--c-white);
+}
+
+.headline__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+/* Stacked bar: coupon split into downside risk / interest / cost */
+.coupon-stack {
+  flex: 0 0 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.coupon-stack__part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #000;
+  transform-origin: top center;
+}
+
+.coupon-stack__part--risk {
+  height: 172px;
+  background: var(--c-orange);
+  color: var(--c-white);
+}
+
+.coupon-stack__part--interest {
+  height: 126px;
+  background: #d7d7d2;
+}
+
+.coupon-stack__part--cost {
+  height: 67px;
+  background: #efefed;
+}
+
+/* Reveal on scroll: parts drop in one after another */
+.js .coupon-stack__part {
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.js .coupon-stack.is-visible .coupon-stack__part {
+  opacity: 1;
+  transform: none;
+}
+
+.js .coupon-stack.is-visible .coupon-stack__part--interest {
+  transition-delay: 0.15s;
+}
+
+.js .coupon-stack.is-visible .coupon-stack__part--cost {
+  transition-delay: 0.3s;
+}
+
+/* Copy */
+.headline__copy {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: 0;
+}
+
+.headline__title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.0417em;
+  color: var(--c-dark);
+}
+
+.headline__text {
+  font-size: 17px;
+  line-height: 27px;
+  color: var(--c-text);
+}
+
+.headline__note {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--c-text);
+}
+
+/* ==========================================================================
+   Headline yield: tablet / mobile (copy first, stacked bar below)
+   ========================================================================== */
+@media (max-width: 1199px) {
+  .headline__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+
+  .coupon-stack {
+    order: 1;
+    flex: none;
+  }
+
+  .headline__copy,
+  .headline__copy .check-list {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .headline__inner {
+    gap: 32px;
+  }
+
+  .headline__title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .headline__copy {
+    gap: 16px;
+  }
+
+  .headline__copy .check-list {
+    gap: 12px;
+  }
+}

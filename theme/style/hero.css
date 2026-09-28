@@ -1,0 +1,360 @@
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  /* Header overlaps the hero: pull the section up under it */
+  margin-top: calc(-1 * (var(--header-top) + var(--header-h)));
+  padding: calc(var(--header-top) + var(--header-h) + 36px) 36px 36px;
+  background: var(--c-bg-alt);
+}
+
+.hero__card {
+  position: relative;
+  display: flex;
+  min-height: 828px;
+  padding: 36px;
+  border-radius: 32px;
+  background: var(--c-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__inner {
+  display: flex;
+  gap: 54px;
+}
+
+/* Decorative wave lines: shared look here, position set by the modifiers */
+.hero__lines {
+  position: absolute;
+  z-index: -1;
+  max-width: none;
+  /* natural size, clipped by the card */
+  opacity: 0.2;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero__lines--top {
+  top: 0;
+  right: 0;
+  /* visible lines end 175px from the viewport edge at 1440, as in the design */
+  width: 1155px;
+}
+
+.hero__lines--bottom {
+  bottom: 0;
+  left: 0;
+  width: 896px;
+}
+
+/* Copy column */
+.hero__copy {
+  flex: 0 1 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 52px;
+  min-width: 0;
+}
+
+.hero__main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.hero__title {
+  font-size: 76px;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  color: var(--c-dark);
+}
+
+.hero__lead {
+  max-width: 620px;
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+.hero__meta {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--c-dark);
+}
+
+.hero__disclaimer {
+  max-width: 570px;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--c-text);
+}
+
+/* --------------------------------------------------------------------------
+   Photo slider
+   -------------------------------------------------------------------------- */
+.hero-slider {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 36px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--c-dark);
+  isolation: isolate;
+}
+
+.hero-slider__slides {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-slider__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+}
+
+.hero-slider__slide.is-active {
+  opacity: 1;
+}
+
+.hero-slider__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.06);
+  transition: transform 7s linear;
+}
+
+.hero-slider__slide.is-active img {
+  transform: scale(1);
+}
+
+/* Bottom shade under the caption, from the design */
+.hero-slider__slides::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, #000 100%);
+}
+
+/* Caption card */
+.hero-slider__captions {
+  display: grid;
+}
+
+.hero-slider__caption {
+  grid-area: 1 / 1;
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--c-white);
+  box-shadow: 8px 42px 52px rgba(134, 133, 133, 0.4);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  pointer-events: none;
+}
+
+.hero-slider__caption.is-active {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.2s;
+  pointer-events: auto;
+}
+
+/* Progress bars: the active bar is wide and fills over the slide duration */
+.hero-slider__progress {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+}
+
+.hero-slider__bar {
+  position: relative;
+  flex: 1 1 0;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  transition: flex-grow 0.6s var(--ease);
+}
+
+/* Enlarged click area */
+.hero-slider__bar::before {
+  content: "";
+  position: absolute;
+  inset: -10px 0;
+}
+
+.hero-slider__bar.is-active {
+  flex-grow: 5.75;
+}
+
+.hero-slider__bar-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--c-white);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.hero-slider__bar.is-done .hero-slider__bar-fill {
+  transform: scaleX(1);
+}
+
+.hero-slider__bar.is-active .hero-slider__bar-fill {
+  animation: hero-bar-fill var(--slide-duration, 6s) linear forwards;
+}
+
+.hero-slider.is-paused .hero-slider__bar.is-active .hero-slider__bar-fill {
+  animation-play-state: paused;
+}
+
+@keyframes hero-bar-fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ==========================================================================
+   Hero: tablet / mobile
+   ========================================================================== */
+@media (max-width: 1370px) {
+  .hero__copy {
+    flex: 0 1 600px;
+  }
+
+  .hero__title {
+    font-size: 66px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .hero__copy {
+    flex: 0 1 500px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .hero {
+    padding: calc(var(--header-top) + var(--header-h) + 24px) 24px 24px;
+  }
+
+  .hero__card {
+    display: block;
+    min-height: 0;
+  }
+
+  .hero__inner {
+    flex-direction: column;
+  }
+
+  .hero__copy {
+    flex: none;
+  }
+
+  .hero__main {
+    flex: none;
+  }
+
+  .hero__title {
+    margin-top: -4px;
+    font-size: 64px;
+  }
+
+  .hero__lines--top {
+    right: -647px;
+  }
+
+  /* only the stripes left of the photo show; the curve stays under it */
+  .hero__lines--bottom {
+    bottom: 250px;
+  }
+
+  .hero-slider {
+    flex: none;
+    height: 400px;
+  }
+
+  .hero-slider__slide img {
+    object-position: 50% 65%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding: calc(var(--header-h) + 6px) 6px 12px;
+  }
+
+  .hero__card {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .hero__inner,
+  .hero__copy {
+    gap: 24px;
+  }
+
+  .hero__main {
+    gap: 20px;
+  }
+
+  .hero__title {
+    margin-top: 0;
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .hero__lead {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+  }
+
+  .hero__lines {
+    display: none;
+  }
+
+  .hero__disclaimer {
+    letter-spacing: -0.01em;
+  }
+
+  .hero-slider {
+    height: 372px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .hero-slider__caption {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .hero-slider__progress {
+    padding: 8px 0 0;
+  }
+}

@@ -1,0 +1,150 @@
+/* ==========================================================================
+   Webinar details (orange strip)
+   ========================================================================== */
+
+.details {
+  padding: 0 12px;
+}
+
+.details__card {
+  position: relative;
+  padding: 72px;
+  border-radius: var(--radius-section);
+  background: var(--c-orange);
+  color: var(--c-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.details__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.details__lines {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  max-width: none;
+  /* natural size, clipped by the card */
+  pointer-events: none;
+  user-select: none;
+}
+
+.details__lines--left {
+  left: 0;
+  width: 1021px;
+}
+
+.details__lines--right {
+  right: 0;
+  width: 933px;
+}
+
+.details__list {
+  align-self: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.details__item {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.details__label {
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.0909em;
+  text-transform: uppercase;
+}
+
+.details__value {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.details__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.details__note {
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Details: tablet / mobile
+   ========================================================================== */
+@media (max-width: 1199px) {
+  .details__card {
+    padding: 48px 32px;
+  }
+
+  /* only the right lines are shown on tablet, as in the design */
+  .details__lines--left {
+    display: none;
+  }
+
+  .details__list {
+    justify-content: center;
+    gap: 24px 16px;
+  }
+
+  .details__item {
+    flex: 0 0 200px;
+  }
+}
+
+@media (max-width: 767px) {
+  .details {
+    padding: 0;
+  }
+
+  .details__card {
+    padding: 52px 16px 24px;
+  }
+
+  .details__lines--right {
+    display: none;
+  }
+
+  .details__inner {
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .details__list {
+    justify-content: flex-start;
+    gap: 16px 8px;
+  }
+
+  .details__item {
+    flex: 0 0 calc(50% - 4px);
+    min-width: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .details__value {
+    white-space: normal;
+  }
+
+  .details__cta {
+    align-items: stretch;
+  }
+}

@@ -1,0 +1,288 @@
+/* ==========================================================================
+   Why this topic matters (bento, 4 cards)
+   ========================================================================== */
+
+.why__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.why-grid {
+  display: flex;
+  gap: 12px;
+  height: 614px;
+}
+
+.why-grid__side {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.why-grid__row {
+  flex: 1 1 0;
+  display: flex;
+  gap: 12px;
+  min-height: 0;
+}
+
+/* Card */
+.why-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  background: var(--c-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.why-card__text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+}
+
+.why-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--c-dark);
+}
+
+.why-card__desc {
+  font-size: 14px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+.why-card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-white);
+}
+
+.why-card__media img {
+  position: absolute;
+  max-width: none;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+/* <picture> (art direction for mobile) must not affect the layout of its <img> */
+.why-card__media picture {
+  display: contents;
+}
+
+.why-card:hover .why-card__media img {
+  transform: scale(1.03);
+}
+
+/* 01 — tall card, illustration pinned to the bottom */
+.why-card--structure {
+  flex: 0 0 300px;
+}
+
+.why-card--structure .why-card__media {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 390px;
+  z-index: 0;
+}
+
+.why-card--structure .why-card__media img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 02 — wide card, illustration on the right */
+.why-card--conditions {
+  flex: none;
+}
+
+.why-card--conditions .why-card__text {
+  padding-right: 124px;
+}
+
+.why-card--conditions .why-card__desc {
+  max-width: 344px;
+}
+
+.why-card--conditions .why-card__media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 554px;
+  height: 100%;
+  z-index: 0;
+}
+
+.why-card--conditions .why-card__media img {
+  left: 151px;
+  top: -55px;
+  width: 318px;
+  height: 238px;
+}
+
+/* 03 and 04 — text on top, illustration fills the rest */
+.why-card--downside,
+.why-card--term {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.why-card--downside .why-card__media,
+.why-card--term .why-card__media {
+  flex: 1 1 auto;
+}
+
+.why-card--downside .why-card__media img {
+  left: 24px;
+  top: -2px;
+  width: 436px;
+  height: 290px;
+}
+
+.why-card--term .why-card__media img {
+  left: 67px;
+  top: 5px;
+  width: 351px;
+  height: 263px;
+}
+
+/* ==========================================================================
+   Why: tablet (2 x 2) / mobile (1 column)
+   Text on top, illustration below
+   ========================================================================== */
+@media (max-width: 1199px) {
+  .why__inner {
+    gap: 40px;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    height: auto;
+  }
+
+  .why-grid__side,
+  .why-grid__row {
+    display: contents;
+  }
+
+  .why-card--structure,
+  .why-card--conditions,
+  .why-card--downside,
+  .why-card--term {
+    flex: none;
+  }
+
+  .why-card--conditions .why-card__text {
+    padding-right: 24px;
+  }
+
+  .why-card--conditions .why-card__desc {
+    max-width: none;
+  }
+
+  .why-card .why-card__media {
+    position: relative;
+    inset: auto;
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .why-card .why-card__media img {
+    position: static;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .why-card--structure .why-card__media {
+    flex: none;
+    min-height: 0;
+  }
+
+  .why-card--structure .why-card__media img {
+    width: 300px;
+    height: 225px;
+    object-fit: contain;
+    margin-top: 14px;
+  }
+
+  .why-card--conditions .why-card__media img,
+  .why-card--downside .why-card__media img {
+    width: 100%;
+  }
+
+  .why-card--term .why-card__media {
+    flex: none;
+    height: 100%;
+  }
+
+  .why-card--term .why-card__media img {
+    width: 340px;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .why__inner {
+    gap: 24px;
+  }
+
+  .why-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .why-card__text {
+    padding: 20px;
+  }
+
+  .why-card--structure .why-card__media {
+    flex: none;
+    height: 100%;
+  }
+
+  .why-card--structure .why-card__media img {
+    margin-top: 8px;
+    width: 301px;
+  }
+
+  .why-card.why-card--conditions .why-card__media img,
+  .why-card.why-card--downside .why-card__media img {
+    width: 360px;
+  }
+
+  .why-card--conditions .why-card__media {
+    flex: none;
+    height: 100%;
+  }
+
+  .why-card--term .why-card__media {
+    height: 100%;
+  }
+
+  .why-card--term .why-card__media img {
+    width: 287px;
+    margin-top: 8px;
+  }
+}

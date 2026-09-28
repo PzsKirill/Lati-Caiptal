@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Do Structured Products Generate a 10-15% Coupon? | Lati Capital Webinar</title>
+  <meta name="description"
+    content="Educational webinar by Lati Capital: how structured products build a 10-15% coupon, where the downside sits, and how to evaluate them.">
+
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="image/png/hero-image.png" as="image">
+
+  <link rel="stylesheet" href="style/base.css?v=14">
+  <link rel="stylesheet" href="style/header.css?v=14">
+  <link rel="stylesheet" href="style/hero.css?v=14">
+  <link rel="stylesheet" href="style/details.css?v=14">
+  <link rel="stylesheet" href="style/why.css?v=14">
+  <link rel="stylesheet" href="style/curriculum.css?v=14">
+  <link rel="stylesheet" href="style/payoff.css?v=14">
+  <link rel="stylesheet" href="style/audience.css?v=14">
+  <link rel="stylesheet" href="style/headline.css?v=14">
+  <link rel="stylesheet" href="style/framework.css?v=14">
+  <link rel="stylesheet" href="style/speaker.css?v=14">
+  <link rel="stylesheet" href="style/expect.css?v=14">
+  <link rel="stylesheet" href="style/register.css?v=14">
+  <link rel="stylesheet" href="style/faq.css?v=14">
+  <link rel="stylesheet" href="style/footer.css?v=14">
+
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+
+<body>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <!-- Arrow inside every pill button -->
+    <symbol id="icon-arrow" viewBox="0 0 8 8">
+      <path fill="currentColor"
+        d="M0.777593 7.63636L0 6.85978L5.7821 1.07526H1.31593L1.3259 0H7.63636V6.3122H6.54973L6.5597 1.85184L0.777593 7.63636Z" />
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 16 16">
+      <path d="M4 8.2 6.6 10.8 12 5.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-airplay" viewBox="0 0 16 16">
+      <path
+        d="M3.33317 11.3333H2.66645C2.3128 11.3333 1.97363 11.1929 1.72356 10.9428C1.47349 10.6928 1.33301 10.3536 1.33301 10V3.33333C1.33301 2.97971 1.47349 2.64057 1.72356 2.39052C1.97363 2.14048 2.3128 2 2.66645 2H13.334C13.6876 2 14.0268 2.14048 14.2769 2.39052C14.5269 2.64057 14.6674 2.97971 14.6674 3.33333V10C14.6674 10.3536 14.5269 10.6928 14.2769 10.9428C14.0268 11.1929 13.6876 11.3333 13.334 11.3333H12.6672M8.00021 10L11.3338 14H4.66661L8.00021 10Z"
+        fill="none" stroke="currentColor" stroke-width="1.23636" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-play" viewBox="0 0 16 16">
+      <path d="M4.667 2.667 12.667 8l-8 5.333V2.667Z" fill="none" stroke="currentColor" stroke-width="1.33"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-file" viewBox="0 0 16 16">
+      <path
+        d="M9.33299 1.33301H4.00019C3.64661 1.33301 3.3075 1.4735 3.05748 1.72357C2.80745 1.97363 2.66699 2.3128 2.66699 2.66645V13.334C2.66699 13.6876 2.80745 14.0268 3.05748 14.2769C3.3075 14.5269 3.64661 14.6674 4.00019 14.6674H11.9994C12.353 14.6674 12.6921 14.5269 12.9421 14.2769C13.1921 14.0268 13.3326 13.6876 13.3326 13.334V5.33333M9.33299 1.33301C9.54401 1.33267 9.753 1.37408 9.94795 1.45487C10.1429 1.53565 10.3199 1.65421 10.4689 1.80371L12.8606 4.19591C13.0105 4.34492 13.1294 4.52216 13.2104 4.71739C13.2914 4.91261 13.3329 5.12196 13.3326 5.33333M9.33299 1.33301V4.66661C9.33299 4.84343 9.40322 5.01301 9.52823 5.13805C9.65324 5.26308 9.8228 5.33333 9.99959 5.33333L13.3326 5.33333M6.66659 6.00005H5.33339M10.6662 8.66693H5.33339M10.6662 11.3338H5.33339"
+        fill="none" stroke="currentColor" stroke-width="1.23636" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-diagram" viewBox="0 0 16 16">
+      <path
+        d="M8.73991 5.10938L9.92658 6.89071M9.44126 8.52539L7.22526 9.47472M13.3333 2.66667L9.29329 3.67667M2 2V12.6667C2 13.0203 2.14048 13.3594 2.39052 13.6095C2.64057 13.8595 2.97971 14 3.33333 14H14M9.33333 4C9.33333 4.73638 8.73638 5.33333 8 5.33333C7.26362 5.33333 6.66667 4.73638 6.66667 4C6.66667 3.26362 7.26362 2.66667 8 2.66667C8.73638 2.66667 9.33333 3.26362 9.33333 4ZM12 8C12 8.73638 11.403 9.33333 10.6667 9.33333C9.93029 9.33333 9.33333 8.73638 9.33333 8C9.33333 7.26362 9.93029 6.66667 10.6667 6.66667C11.403 6.66667 12 7.26362 12 8ZM7.33333 10C7.33333 10.7364 6.73638 11.3333 6 11.3333C5.26362 11.3333 4.66667 10.7364 4.66667 10C4.66667 9.26362 5.26362 8.66667 6 8.66667C6.73638 8.66667 7.33333 9.26362 7.33333 10Z"
+        fill="none" stroke="currentColor" stroke-width="1.23636" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-question" viewBox="0 0 16 16">
+      <path
+        d="M6.05994 5.99974C6.21669 5.55415 6.52608 5.17842 6.93331 4.93909C7.34055 4.69975 7.81934 4.61227 8.2849 4.69212C8.75046 4.77198 9.17273 5.01402 9.47693 5.37538C9.78113 5.73674 9.94762 6.1941 9.94691 6.66646C9.94691 7.99989 7.94676 8.6666 7.94676 8.6666M8.0002 11.3337H8.00687M1.99419 10.8948C2.09222 11.1421 2.11405 11.4131 2.05686 11.6729L1.3468 13.8664C1.32392 13.9776 1.32984 14.0929 1.36399 14.2012C1.39814 14.3095 1.45939 14.4073 1.54193 14.4853C1.62447 14.5633 1.72557 14.6189 1.83564 14.6469C1.94571 14.6748 2.0611 14.6742 2.17087 14.6451L4.44638 13.9797C4.69154 13.9311 4.94544 13.9523 5.1791 14.0411C6.60281 14.7059 8.21559 14.8466 9.7329 14.4382C11.2502 14.0299 12.5745 13.0988 13.4722 11.8091C14.3699 10.5195 14.7833 8.95429 14.6394 7.38961C14.4955 5.82492 13.8036 4.36134 12.6857 3.25707C11.5679 2.15281 10.096 1.47884 8.52962 1.35407C6.96329 1.2293 5.40321 1.66175 4.12465 2.57512C2.84609 3.48849 1.9312 4.82408 1.54141 6.34626C1.15162 7.86843 1.31198 9.47936 1.99419 10.8948Z"
+        fill="none" stroke="currentColor" stroke-width="1.23636" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-archive" viewBox="0 0 16 16">
+      <path
+        d="M2.66645 5.33333V12.6667C2.66645 13.0203 2.80693 13.3594 3.057 13.6095C3.30707 13.8595 3.64624 14 3.99989 14H12.0005C12.3542 14 12.6933 13.8595 12.9434 13.6095C13.1935 13.3594 13.334 13.0203 13.334 12.6667V5.33333M6.66677 8H9.33365M1.99973 2H14.0007C14.3689 2 14.6674 2.29848 14.6674 2.66667V4.66667C14.6674 5.03486 14.3689 5.33333 14.0007 5.33333H1.99973C1.63151 5.33333 1.33301 5.03486 1.33301 4.66667V2.66667C1.33301 2.29848 1.63151 2 1.99973 2Z"
+        fill="none" stroke="currentColor" stroke-width="1.23636" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-briefcase" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        <rect width="20" height="14" x="2" y="6" rx="2" />
+      </g>
+    </symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+        <path d="M18 17V9" />
+        <path d="M13 17V5" />
+        <path d="M8 17v-3" />
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- ======================= Header ======================= -->
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <div class="site-header__bar">
+        <a class="site-header__logo" href="#top" aria-label="Lati Capital — back to top">
+          <img src="image/svg/logo.svg" width="118" height="40" alt="Lati Capital">
+        </a>
+
+        <nav class="site-header__nav" aria-label="Main">
+          <ul class="site-header__menu">
+            <li><a href="#learn">What you'll learn</a></li>
+            <li><a href="#speaker">Speaker</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-header__actions">
+          <a class="btn btn--sm site-header__cta" href="#register">
+            Register
+            <span class="btn__icon" aria-hidden="true"><svg>
+                <use href="#icon-arrow" />
+              </svg></span>
+          </a>
+          <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="mobile-menu"
+            aria-label="Open menu" data-menu-toggle>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tablet / mobile menu -->
+    <div class="menu-backdrop" data-menu-backdrop aria-hidden="true"></div>
+    <div class="mobile-menu" id="mobile-menu" data-menu hidden>
+      <ul class="mobile-menu__list">
+        <li><a href="#learn">What you'll learn</a></li>
+        <li><a href="#speaker">Speaker</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a class="btn mobile-menu__cta" href="#register">
+        Register for the Webinar
+        <span class="btn__icon" aria-hidden="true"><svg>
+            <use href="#icon-arrow" />
+          </svg></span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ======================= Hero ======================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__card">
+        <img class="hero__lines hero__lines--top" src="image/svg/hero-lines-top.svg" alt="" aria-hidden="true">
+        <img class="hero__lines hero__lines--bottom" src="image/svg/hero-lines-bottom.svg" alt="" aria-hidden="true">
+
+        <div class="hero__inner container">
+          <div class="hero__copy">
+            <div class="hero__main">
+              <p class="eyebrow">Live webinar</p>
+              <h1 class="hero__title" id="hero-title">How Do Structured Products Generate a 10-15% Coupon?</h1>
+              <p class="hero__lead">High headline coupons look attractive, but the numbers alone don't reveal the hidden
+                mechanics. Join us to learn how the coupon is built, where the downside sits, and what you must
+                understand before evaluating these products.</p>
+              <a class="btn btn--block-mobile" href="#register">
+                Register for the Webinar
+                <span class="btn__icon" aria-hidden="true"><svg>
+                    <use href="#icon-arrow" />
+                  </svg></span>
+              </a>
+              <p class="hero__meta">[Date] · [Time] · Online · [Duration]</p>
+            </div>
+
+            <p class="hero__disclaimer">Hosted by Lati Capital, an SEC-registered investment advisor. Quoted coupons are
+              not guaranteed. This webinar is for education and is not an offer to buy or sell securities.</p>
+          </div>
+
+          <div class="hero-slider" data-hero-slider data-duration="6000" aria-roledescription="carousel"
+            aria-label="Webinar highlights">
+            <div class="hero-slider__slides">
+              <!-- TODO: replace slides 2–3 with their own photos when provided -->
+              <figure class="hero-slider__slide is-active" data-slide>
+                <img src="image/png/hero-image.png" width="1084" height="1512" alt="Gian-Marco Frey in Lower Manhattan"
+                  fetchpriority="high">
+              </figure>
+              <figure class="hero-slider__slide" data-slide aria-hidden="true">
+                <img src="image/png/hero-image.png" width="1084" height="1512" alt="" loading="lazy">
+              </figure>
+              <figure class="hero-slider__slide" data-slide aria-hidden="true">
+                <img src="image/png/hero-image.png" width="1084" height="1512" alt="" loading="lazy">
+              </figure>
+            </div>
+
+            <div class="hero-slider__captions" aria-live="polite">
+              <p class="hero-slider__caption is-active" data-caption>Where does a 10-15%+ structured product yield
+                actually come from?</p>
+              <p class="hero-slider__caption" data-caption>What happens to your principal if the barrier is breached?
+              </p>
+              <p class="hero-slider__caption" data-caption>What do you give up inside a bank-issued note?</p>
+            </div>
+
+            <div class="hero-slider__progress">
+              <button class="hero-slider__bar is-active" type="button" data-bar aria-label="Show slide 1"><span
+                  class="hero-slider__bar-fill"></span></button>
+              <button class="hero-slider__bar" type="button" data-bar aria-label="Show slide 2"><span
+                  class="hero-slider__bar-fill"></span></button>
+              <button class="hero-slider__bar" type="button" data-bar aria-label="Show slide 3"><span
+                  class="hero-slider__bar-fill"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Webinar details ======================= -->
+    <section class="details" aria-label="Webinar details">
+      <div class="details__card">
+        <img class="details__lines details__lines--left" src="image/svg/details-lines-left.svg" alt=""
+          aria-hidden="true">
+        <img class="details__lines details__lines--right" src="image/svg/details-lines-right.svg" alt=""
+          aria-hidden="true">
+
+        <div class="details__inner container">
+          <dl class="details__list">
+            <div class="details__item">
+              <dt class="details__label">Date</dt>
+              <dd class="details__value">[Date]</dd>
+            </div>
+            <div class="details__item">
+              <dt class="details__label">Time</dt>
+              <dd class="details__value">[Time]</dd>
+            </div>
+            <div class="details__item">
+              <dt class="details__label">Duration</dt>
+              <dd class="details__value">[Duration]</dd>
+            </div>
+            <div class="details__item">
+              <dt class="details__label">Format</dt>
+              <dd class="details__value">Online / [Platform]</dd>
+            </div>
+            <div class="details__item">
+              <dt class="details__label">Cost</dt>
+              <dd class="details__value">[Cost]</dd>
+            </div>
+            <div class="details__item">
+              <dt class="details__label">Language</dt>
+              <dd class="details__value">[Language]</dd>
+            </div>
+            <div class="details__item">
+              <dt class="details__label">Registration deadline</dt>
+              <dd class="details__value">[Deadline]</dd>
+            </div>
+          </dl>
+
+          <div class="details__cta">
+            <a class="btn btn--dark btn--block-mobile" href="#register">
+              Reserve Your Spot
+              <span class="btn__icon" aria-hidden="true"><svg>
+                  <use href="#icon-arrow" />
+                </svg></span>
+            </a>
+            <p class="details__note">Can't make the live session?<br> Register anyway. We'll send the recording.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Why this topic matters ======================= -->
+    <section class="section section--alt why" aria-labelledby="why-title">
+      <div class="container why__inner">
+        <div class="section-head">
+          <div class="section-head__main">
+            <p class="eyebrow">Why this topic matters</p>
+            <h2 class="section-title" id="why-title">The question is not whether 12% looks attractive.</h2>
+          </div>
+          <p class="section-head__lead section-lead">A high coupon can look like simple income, but the real question is
+            what creates that return, what has to happen for you to receive it, and what happens when the scenario
+            breaks.</p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card why-card--structure">
+            <div class="why-card__text">
+              <span class="num-tag">01</span>
+              <h3 class="why-card__title">The coupon has a structure</h3>
+              <p class="why-card__desc">Structured-product returns are created through a combination of lending,
+                options, and downside risk. Understanding those components makes the quoted coupon easier to evaluate.
+              </p>
+            </div>
+            <div class="why-card__media">
+              <img src="image/png/why-structure.png" width="596" height="780" alt="" loading="lazy">
+            </div>
+          </article>
+
+          <div class="why-grid__side">
+            <article class="why-card why-card--conditions">
+              <div class="why-card__text">
+                <span class="num-tag">02</span>
+                <h3 class="why-card__title">Conditions matter</h3>
+                <p class="why-card__desc">The question is not simply whether 12% is attractive. It is what has to happen
+                  for you to receive that return.</p>
+              </div>
+              <div class="why-card__media">
+                <img src="image/png/why-conditions.png" width="680" height="476" alt="" loading="lazy">
+              </div>
+            </article>
+
+            <div class="why-grid__row">
+              <article class="why-card why-card--downside">
+                <div class="why-card__text">
+                  <span class="num-tag">03</span>
+                  <h3 class="why-card__title">Downside changes the picture</h3>
+                  <p class="why-card__desc">When the barrier is breached, the outcome can look very different from when
+                    it isn't. The coupon only makes sense when considered together with that risk.</p>
+                </div>
+                <div class="why-card__media">
+                  <picture>
+                    <source media="(max-width: 767px)" srcset="image/png/Rectangle.png" width="722" height="360">
+                    <img src="image/png/why-downside.png" width="872" height="574" alt="" loading="lazy">
+                  </picture>
+                </div>
+              </article>
+
+              <article class="why-card why-card--term">
+                <div class="why-card__text">
+                  <span class="num-tag">04</span>
+                  <h3 class="why-card__title">The term is not fixed</h3>
+                  <p class="why-card__desc">Many of these notes are autocallable: if the underlying meets the set
+                    condition on an observation date, the issuer redeems it early and returns your principal – before
+                    the term you originally planned for. Your actual holding period can end up shorter than expected.
+                  </p>
+                </div>
+                <div class="why-card__media">
+                  <img src="image/png/why-term.png" width="702" height="526" alt="" loading="lazy">
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= What you will learn ======================= -->
+    <section class="section curriculum" id="learn" aria-labelledby="learn-title">
+      <div class="container curriculum__inner">
+        <div class="section-head">
+          <div class="section-head__main">
+            <p class="eyebrow">What you will learn</p>
+            <h2 class="section-title" id="learn-title">Exactly what you'll be able to evaluate after [Duration]</h2>
+          </div>
+          <p class="section-head__lead section-lead">The session follows the mechanics in order: how the product works,
+            why the headline coupon sits above ordinary interest, what the bank wrapper adds, and what changes if that
+            wrapper is removed.</p>
+        </div>
+
+        <div class="curriculum__body">
+          <figure class="price-chart" data-price-chart
+            aria-label="Example note: underlying share price with coupon events, barrier and autocall trigger">
+            <div class="price-chart__frame">
+              <span class="price-chart__y-title">Share Price</span>
+              <div class="price-chart__area">
+                <div class="price-chart__grid" data-grid data-min="250" data-max="500">
+                  <div class="price-chart__row"><span>500.00</span></div>
+                  <div class="price-chart__row"><span>450.00</span></div>
+                  <div class="price-chart__row"><span>400.00</span></div>
+                  <div class="price-chart__row"><span>350.00</span></div>
+                  <div class="price-chart__row"><span>300.00</span></div>
+                  <div class="price-chart__row"><span>250.00</span></div>
+                  <div class="price-chart__plot">
+                    <svg class="price-chart__svg" data-svg aria-hidden="true"></svg>
+                  </div>
+                </div>
+                <div class="price-chart__x" data-x-axis aria-hidden="true"></div>
+              </div>
+            </div>
+            <ul class="price-chart__legend">
+              <li><span class="legend-key legend-key--spot"></span>Spot</li>
+              <li><span class="legend-key legend-key--coupon"></span>Coupon Event</li>
+              <li><span class="legend-key legend-key--barrier"></span>Barrier</li>
+              <li><span class="legend-key legend-key--autocall"></span>Autocall-Trigger</li>
+            </ul>
+          </figure>
+
+          <div class="note-table" data-note-table role="table" aria-label="Example note data">
+            <div class="note-table__row note-table__head" role="row">
+              <span role="columnheader">Spot</span>
+              <span role="columnheader">Delta</span>
+              <span role="columnheader">Cash</span>
+              <span role="columnheader">Coupon Event</span>
+              <span role="columnheader">Barrier</span>
+              <span role="columnheader">Autocall-Trigger</span>
+            </div>
+            <div class="note-table__viewport">
+              <div class="note-table__body" data-rows role="rowgroup"></div>
+            </div>
+          </div>
+
+          <ol class="learn-grid" data-learn-grid>
+            <li class="learn-card is-active"><span class="learn-card__num">01</span><span class="learn-card__title">How
+                structured products generate their headline coupon</span></li>
+            <li class="learn-card"><span class="learn-card__num">02</span><span class="learn-card__title">Why the quoted
+                coupon can be significantly higher than ordinary interest</span></li>
+            <li class="learn-card"><span class="learn-card__num">03</span><span class="learn-card__title">What barriers,
+                coupons, caps, downside scenarios, and autocallable features actually mean</span></li>
+            <li class="learn-card"><span class="learn-card__num">04</span><span class="learn-card__title">How the bank
+                manages the risk behind the product</span></li>
+            <li class="learn-card"><span class="learn-card__num">05</span><span class="learn-card__title">What investors
+                pay for through the traditional note wrapper</span></li>
+            <li class="learn-card"><span class="learn-card__num">06</span><span class="learn-card__title">Why a
+                bank-issued note is typically worth less than the amount invested on day one</span></li>
+            <li class="learn-card"><span class="learn-card__num">07</span><span class="learn-card__title">How issuer
+                credit risk, liquidity, and structuring costs affect the economics</span></li>
+            <li class="learn-card"><span class="learn-card__num">08</span><span class="learn-card__title">How similar
+                payoff structures can be built directly inside an investment account</span></li>
+            <li class="learn-card"><span class="learn-card__num">09</span><span class="learn-card__title">What is
+                gained, and what is given up, when the bank-issued wrapper is removed</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Payoff example ======================= -->
+    <section class="section payoff" aria-labelledby="payoff-title">
+      <div class="container payoff__inner">
+        <div class="payoff__copy">
+          <div class="payoff__head">
+            <p class="eyebrow">A simple structured product example</p>
+            <h2 class="section-title" id="payoff-title">See the mechanics in 30 seconds</h2>
+          </div>
+          <p class="payoff-step is-active" data-step data-level="45" tabindex="0">You invest [Amount]. The product
+            offers [Coupon]% if the underlying remains above a predefined barrier.</p>
+          <p class="payoff-step" data-step data-level="120" data-zone="safe" tabindex="0">If the underlying stays above
+            that level, the coupon is paid and principal is returned in full.</p>
+          <p class="payoff-step" data-step data-level="30" data-zone="risk" tabindex="0">If it finishes below the
+            barrier at maturity, you may not get cash back. You may receive shares worth less than the original
+            investment.</p>
+        </div>
+
+        <div class="payoff__visual">
+          <figure class="payoff-chart" data-payoff
+            aria-label="Payoff at maturity: below the barrier the payoff follows the underlying; at or above it, principal plus coupon is paid">
+            <div class="payoff-chart__grid" aria-hidden="true">
+              <div class="payoff-chart__row"><span>125 %</span></div>
+              <div class="payoff-chart__row"><span>100 %</span></div>
+              <div class="payoff-chart__row"><span>75 %</span></div>
+              <div class="payoff-chart__row"><span>50 %</span></div>
+              <div class="payoff-chart__row"><span>25 %</span></div>
+              <div class="payoff-chart__row"><span>0 %</span></div>
+            </div>
+            <div class="payoff-chart__x" aria-hidden="true">
+              <span>0%</span><span>Barrier</span><span>Initial level</span><span>140%</span>
+            </div>
+
+            <div class="payoff-chart__plot" data-plot>
+              <!-- 786 x 380 at 1440. x and y in % of the plot: 0 % payoff = 100%, payoff at barrier = 44.21%, principal + coupon = 18.68% -->
+              <svg class="payoff-chart__svg" aria-hidden="true">
+                <rect x="0" y="0" width="36.39%" height="99.74%" fill="#bb2e2e" opacity="0.02" />
+                <rect x="37.02%" y="0" width="62.98%" height="99.74%" fill="#2b86d1" opacity="0.02" />
+                <line x1="36.45%" y1="0" x2="36.45%" y2="100%" stroke="#000" stroke-opacity="0.1" />
+                <line x1="0" y1="100%" x2="36.45%" y2="44.21%" stroke="#bb2e2e" stroke-width="2" />
+                <circle class="pf-dot" cx="0" cy="100%" r="6" fill="#bb2e2e" />
+                <circle class="pf-dot" cx="36.45%" cy="44.21%" r="6" fill="#bb2e2e" />
+              </svg>
+              <!-- Principal + coupon: anchored right, length per breakpoint (--safe-w) -->
+              <span class="payoff-chart__safe" aria-hidden="true">
+                <span class="payoff-chart__label">Principal + coupon</span>
+              </span>
+              <span class="payoff-chart__point" data-point style="left:21.87%;top:66.53%"></span>
+              <div class="payoff-tip" data-tip style="left:21.87%;top:66.53%" role="status">
+                <span class="payoff-tip__title" data-tip-title>45% of initial → Payoff 45%</span>
+                <span class="payoff-tip__sub" data-tip-sub>Capital at risk</span>
+              </div>
+            </div>
+          </figure>
+          <p class="payoff__note">This is the kind of example we walk through live: practical, not theoretical.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Who this webinar is for ======================= -->
+    <section class="section audience" aria-labelledby="audience-title">
+      <div class="container audience__inner">
+        <h2 class="audience__title" id="audience-title">Who this webinar is for</h2>
+
+        <div class="audience__cards">
+          <article class="audience-card">
+            <div class="audience-card__body">
+              <span class="audience-card__icon" aria-hidden="true"><svg>
+                  <use href="#icon-briefcase" />
+                </svg></span>
+              <h3 class="audience-card__title">Investors</h3>
+              <ul class="check-list audience-card__list">
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>already invest through brokerage or wealth-management accounts</li>
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>own or are considering structured notes</li>
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>are looking for income while managing downside exposure</li>
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>want to understand the relationship between yield, risk, liquidity, and fees</li>
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>want to evaluate products based on economics rather than headline coupon</li>
+              </ul>
+            </div>
+            <div class="audience-card__media">
+              <img src="image/png/audience-investors.png" width="1024" height="594" alt="" loading="lazy">
+            </div>
+          </article>
+
+          <article class="audience-card audience-card--flip">
+            <div class="audience-card__body">
+              <span class="audience-card__icon" aria-hidden="true"><svg>
+                  <use href="#icon-chart" />
+                </svg></span>
+              <h3 class="audience-card__title">RIAs, Wealth Managers &amp; Financial Advisors</h3>
+              <ul class="check-list audience-card__list">
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>evaluate structured products for affluent clients</li>
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>need to explain payoff structures and downside scenarios clearly</li>
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>care about suitability, transparency, liquidity, and client outcomes</li>
+                <li><svg aria-hidden="true">
+                    <use href="#icon-check" />
+                  </svg>want to better understand the economics behind the products they recommend</li>
+              </ul>
+            </div>
+            <div class="audience-card__media">
+              <img src="image/png/audience-advisors.png" width="942" height="594" alt="" loading="lazy">
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= What is usually behind the headline yield ======================= -->
+    <section class="section headline" aria-labelledby="headline-title">
+      <div class="container headline__inner">
+        <div class="coupon-stack" data-reveal aria-hidden="true">
+          <div class="coupon-stack__part coupon-stack__part--risk">Downside risk</div>
+          <div class="coupon-stack__part coupon-stack__part--interest">Interest</div>
+          <div class="coupon-stack__part coupon-stack__part--cost">Cost</div>
+        </div>
+
+        <div class="headline__copy">
+          <p class="eyebrow">What is usually behind the headline yield</p>
+          <h2 class="headline__title" id="headline-title">The 12% coupon is not free money. Here's what you're actually
+            being paid for.</h2>
+          <p class="headline__text">A structured-product coupon generally combines compensation for lending money to the
+            issuer with compensation for accepting a specific market risk. The webinar will break down both components
+            and show how the economics work between the investor, the bank, and the underlying market.</p>
+          <p class="headline__text">Those two components are a bond piece and an equity-risk piece: interest for lending
+            to the bank, and extra coupon for taking on downside if the underlying finishes below the barrier when
+            coupons are due and at maturity.</p>
+          <p class="headline__text">The bank wrapper, the legal packaging that turns the formula into a tradeable note,
+            is also where issuer credit risk, the absence of a meaningful secondary market, and distribution and
+            structuring costs enter the picture. That is the second problem the session addresses.</p>
+          <ul class="check-list">
+            <li><svg aria-hidden="true">
+                <use href="#icon-check" />
+              </svg>Interest and credit component</li>
+            <li><svg aria-hidden="true">
+                <use href="#icon-check" />
+              </svg>Compensation for market exposure</li>
+            <li><svg aria-hidden="true">
+                <use href="#icon-check" />
+              </svg>Compensation for dividends</li>
+          </ul>
+          <p class="headline__note">That same formula, the same two components, can be built directly in an investment
+            account without the bank issuing a note. The bank's version is contractual. The direct version targets the
+            same outcome but does not guarantee it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Evaluation framework ======================= -->
+    <section class="section framework" aria-labelledby="framework-title">
+      <div class="container framework__inner">
+        <div class="section-head">
+          <div class="section-head__main">
+            <p class="eyebrow">Evaluation framework</p>
+            <h2 class="section-title" id="framework-title">Leave with a framework, not just definitions</h2>
+          </div>
+          <p class="section-head__lead section-lead">You should leave with a framework for evaluating structured
+            products, not just a definition of how they work. After the webinar, you should better understand:</p>
+        </div>
+
+        <div class="framework__grid" data-cycle>
+          <ul class="framework__col">
+            <li class="fw-card is-active" data-cycle-item><span class="fw-card__check" aria-hidden="true"><svg>
+                  <use href="#icon-check" />
+                </svg></span>Whether the quoted coupon adequately compensates for the downside risk</li>
+            <li class="fw-card" data-cycle-item><span class="fw-card__check" aria-hidden="true"><svg>
+                  <use href="#icon-check" />
+                </svg></span>What happens if the underlying finishes below the barrier at maturity</li>
+            <li class="fw-card" data-cycle-item><span class="fw-card__check" aria-hidden="true"><svg>
+                  <use href="#icon-check" />
+                </svg></span>How much liquidity matters before maturity</li>
+            <li class="fw-card" data-cycle-item><span class="fw-card__check" aria-hidden="true"><svg>
+                  <use href="#icon-check" />
+                </svg></span>Where issuer credit risk enters the structure</li>
+          </ul>
+          <div class="framework__col">
+            <ul class="framework__col">
+              <li class="fw-card" data-cycle-item><span class="fw-card__check" aria-hidden="true"><svg>
+                    <use href="#icon-check" />
+                  </svg></span>What fees and structuring costs may sit inside the product</li>
+              <li class="fw-card" data-cycle-item><span class="fw-card__check" aria-hidden="true"><svg>
+                    <use href="#icon-check" />
+                  </svg></span>How to compare a bank-issued note with a directly implemented strategy</li>
+              <li class="fw-card" data-cycle-item><span class="fw-card__check" aria-hidden="true"><svg>
+                    <use href="#icon-check" />
+                  </svg></span>Which questions to ask before investing or recommending a product</li>
+            </ul>
+            <p class="framework__note">That comparison includes the real trade-off at the center of the session: a
+              bank&#8209;issued note provides a contractual payoff. Building the same formula in an account produces a
+              target outcome that is not guaranteed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Who you'll hear from ======================= -->
+    <section class="section speaker" id="speaker" aria-labelledby="speaker-title">
+      <div class="container speaker__inner">
+        <figure class="speaker__photo">
+          <img src="image/png/hero-image.png" width="1084" height="1512" alt="Gian-Marco Frey" loading="lazy">
+        </figure>
+
+        <div class="speaker__content">
+          <p class="eyebrow eyebrow--light">Who you'll hear from</p>
+          <h2 class="speaker__name" id="speaker-title">Gian-Marco Frey</h2>
+          <p class="speaker__role">Quant and Derivatives Expert</p>
+          <p class="speaker__bio">Former Goldman Sachs, Morgan Stanley, and AQR Capital. Has created structured
+            products, fixed index annuities, and related products of the type discussed in this session.</p>
+          <!-- TODO: speaker's personal LinkedIn URL (pending from the client) -->
+          <a class="speaker__link" href="#" target="_blank" rel="noopener">
+            <img src="image/svg/linkedin.svg" width="20" height="20" alt="">
+            LinkedIn
+          </a>
+
+          <div class="speaker__hosted">
+            <p class="speaker__hosted-label">Hosted by</p>
+            <div class="speaker__badges">
+              <img src="image/svg/logo-light.svg" width="112" height="40" alt="Lati Capital">
+              <p class="sec-badge">
+                <img src="image/svg/shield-check.svg" width="42" height="42" alt="">
+                <span>SEC-Registered<br>Investment Advisor</span>
+              </p>
+            </div>
+            <p class="speaker__disclaimer">Lati Capital develops account-based investment strategies designed around
+              structured payoff profiles and market scenarios. SEC registration does not imply a certain level of skill
+              or training.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= What to expect ======================= -->
+    <section class="section expect" aria-labelledby="expect-title">
+      <div class="container expect__inner">
+        <h2 class="expect__title" id="expect-title">What to expect</h2>
+
+        <div class="expect__grid">
+          <article class="expect-card">
+            <h3 class="expect-card__title">During the webinar</h3>
+            <ul class="expect-card__list">
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg class="expect-item__svg--desktop">
+                    <use href="#icon-airplay" />
+                  </svg><svg class="expect-item__svg--mobile">
+                    <use href="#icon-play" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Live</span><span
+                    class="expect-item__desc">[Duration] expert presentation</span></span>
+              </li>
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg>
+                    <use href="#icon-file" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Examples</span><span
+                    class="expect-item__desc">Practical payoff examples</span></span>
+              </li>
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg>
+                    <use href="#icon-diagram" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Diagrams</span><span
+                    class="expect-item__desc">Visual diagrams explaining barriers and risk</span></span>
+              </li>
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg>
+                    <use href="#icon-question" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Q&amp;A</span><span
+                    class="expect-item__desc">Live Q&amp;A</span></span>
+              </li>
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg>
+                    <use href="#icon-archive" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Materials</span><span
+                    class="expect-item__desc">Recording + Slides</span></span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="expect-card expect-card--accent">
+            <h3 class="expect-card__title">After the webinar</h3>
+            <ul class="expect-card__list">
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg class="expect-item__svg--desktop">
+                    <use href="#icon-airplay" />
+                  </svg><svg class="expect-item__svg--mobile">
+                    <use href="#icon-play" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Recording</span><span
+                    class="expect-item__desc">[Recording]</span></span>
+              </li>
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg>
+                    <use href="#icon-file" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Slides</span><span
+                    class="expect-item__desc">[Slides]</span></span>
+              </li>
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg>
+                    <use href="#icon-diagram" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Webinar summary</span><span
+                    class="expect-item__desc">[Summary]</span></span>
+              </li>
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg>
+                    <use href="#icon-question" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Example payoff diagrams</span><span
+                    class="expect-item__desc">[Diagrams]</span></span>
+              </li>
+              <li class="expect-item">
+                <span class="expect-item__icon" aria-hidden="true"><svg>
+                    <use href="#icon-archive" />
+                  </svg></span>
+                <span class="expect-item__text"><span class="expect-item__title">Additional materials</span><span
+                    class="expect-item__desc">[Materials]</span></span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Final registration ======================= -->
+    <section class="section register" id="register" aria-labelledby="register-title">
+      <img class="register__lines" src="image/svg/register-lines.svg" alt="" aria-hidden="true">
+
+      <div class="container register__inner">
+        <div class="register__copy">
+          <p class="eyebrow eyebrow--light eyebrow--white-dot">Final registration</p>
+          <h2 class="register__title" id="register-title">Before you focus on the coupon, understand what creates it.
+          </h2>
+          <p class="register__lead">Join the webinar to understand the economics, risks, and trade-offs behind
+            structured-product returns.</p>
+          <p class="register__meta">[Date] · [Time] · [Duration] · Online</p>
+          <p class="register__note">No product pitch. Methodology only.</p>
+        </div>
+
+        <div class="register__side">
+          <!-- TODO: form endpoint (email / Zoom / webinar platform / CRM) is pending from the client -->
+          <form class="reg-form" action="#" method="post">
+            <div class="reg-form__row">
+              <label class="field">
+                <span class="field__label">First name</span>
+                <input class="field__control" type="text" name="first_name" autocomplete="given-name" required>
+              </label>
+              <label class="field">
+                <span class="field__label">Last name</span>
+                <input class="field__control" type="text" name="last_name" autocomplete="family-name" required>
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field__label">Email</span>
+              <input class="field__control" type="email" name="email" autocomplete="email" required>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Role: Investor / RIA / Wealth Manager / Advisor / Other</span>
+              <span class="field__select">
+                <select class="field__control" name="role" required>
+                  <option value="" selected disabled hidden></option>
+                  <option>Investor</option>
+                  <option>RIA</option>
+                  <option>Wealth Manager</option>
+                  <option>Advisor</option>
+                  <option>Other</option>
+                </select>
+              </span>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Company (optional)</span>
+              <input class="field__control" type="text" name="company" autocomplete="organization">
+            </label>
+
+            <label class="check">
+              <input type="checkbox" name="updates" value="1">
+              I agree to receive occasional updates from Lati Capital.
+            </label>
+
+            <button class="btn btn--block-mobile" type="submit">
+              Register for the Webinar
+              <span class="btn__icon" aria-hidden="true"><svg>
+                  <use href="#icon-arrow" />
+                </svg></span>
+            </button>
+
+            <p class="reg-form__legal">
+              <a href="https://cms.lati-capital.com/v1/files/lati-capital/privacy-policy" target="_blank"
+                rel="noopener">Privacy Policy</a> ·
+              <a href="https://cms.lati-capital.com/v1/files/lati-capital/terms-of-use" target="_blank"
+                rel="noopener">Terms of Use</a>
+            </p>
+          </form>
+
+          <p class="register__after">Can't make the live session? Register anyway. We'll send the recording.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= FAQ ======================= -->
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container faq__inner">
+        <div class="faq__head">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="faq__title" id="faq-title">Questions, <br>answered plainly.</h2>
+        </div>
+
+        <!-- TODO: answers 2–4 are drafts (not in the design) — confirm wording with the client -->
+        <div class="faq__list" data-accordion>
+          <div class="faq-item is-open">
+            <h3><button class="faq-item__question" type="button" aria-expanded="true" aria-controls="faq-a1"
+                id="faq-q1">Is this webinar a product pitch?</button></h3>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+            <div class="faq-item__answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <div>
+                <p>No. This is an educational session focused on mechanics and evaluation, not a sales deck.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-item__question" type="button" aria-expanded="false" aria-controls="faq-a2"
+                id="faq-q2">Who is this webinar for?</button></h3>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+            <div class="faq-item__answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
+              <div>
+                <p>Investors who hold or are considering structured notes, and RIAs, wealth managers, and financial
+                  advisors who evaluate these products for clients.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-item__question" type="button" aria-expanded="false" aria-controls="faq-a3"
+                id="faq-q3">Will this be live, and will I get the recording if I miss it?</button></h3>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+            <div class="faq-item__answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
+              <div>
+                <p>Yes. The session runs live on [Platform]. Everyone who registers receives the recording afterwards,
+                  so register even if you can't attend.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-item__question" type="button" aria-expanded="false" aria-controls="faq-a4"
+                id="faq-q4">How is my registration data used?</button></h3>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+            <div class="faq-item__answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
+              <div>
+                <p>We use your details to send webinar access, reminders, and the recording. Occasional updates from
+                  Lati Capital are sent only if you opt in. See our <a
+                    href="https://cms.lati-capital.com/v1/files/lati-capital/privacy-policy" target="_blank"
+                    rel="noopener"><u>Privacy Policy</u></a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================= Footer ======================= -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__top">
+        <a class="site-footer__logo" href="#top" aria-label="Lati Capital — back to top">
+          <img src="image/svg/logo-light.svg" width="112" height="40" alt="Lati Capital">
+        </a>
+        <p class="site-footer__tagline">Understand the formula <br>before you accept the risk.</p>
+        <div class="site-footer__social">
+          <a href="https://www.linkedin.com/company/lati-capital/" target="_blank" rel="noopener"
+            aria-label="Lati Capital on LinkedIn">
+            <img src="image/svg/linkedin.svg" width="32" height="32" alt="">
+          </a>
+          <!-- TODO: the design shows X, the client's current site links Instagram — confirm the network and URL -->
+          <a href="#" target="_blank" rel="noopener" aria-label="Lati Capital on X">
+            <img src="image/svg/x.svg" width="32" height="32" alt="">
+          </a>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <ul class="site-footer__legal">
+          <li><a href="https://cms.lati-capital.com/v1/files/lati-capital/privacy-policy" target="_blank"
+              rel="noopener">Privacy Policy</a></li>
+          <li><a href="https://cms.lati-capital.com/v1/files/lati-capital/terms-of-use" target="_blank"
+              rel="noopener">Terms of Use</a></li>
+          <li><a href="https://cms.lati-capital.com/v1/files/lati-capital/adv-2a-brochure" target="_blank"
+              rel="noopener">Form ADV Part 2A</a></li>
+          <li><a href="https://cms.lati-capital.com/v1/files/lati-capital/form-crs" target="_blank" rel="noopener">Form
+              CRS</a></li>
+        </ul>
+        <p>© Lati Capital</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/chart-data.js?v=14" defer></script>
+  <script src="js/main.js?v=14" defer></script>
+</body>
+
+</html>

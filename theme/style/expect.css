@@ -1,0 +1,203 @@
+/* ==========================================================================
+   What to expect (during / after the webinar)
+   ========================================================================== */
+
+.expect {
+  padding-top: 76px;
+  padding-bottom: 120px;
+  background: var(--c-bg);
+}
+
+.expect__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.expect__title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.0417em;
+  color: var(--c-dark);
+}
+
+.expect__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 72px;
+}
+
+/* Card: coloured shell with a header and an inner list box */
+.expect-card {
+  padding: 4px;
+  border-radius: 20px;
+  background: var(--c-white);
+}
+
+.expect-card__title {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 0 20px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--c-dark);
+}
+
+.expect-card__list {
+  padding: 4px 20px;
+  border-radius: 16px;
+  background: var(--c-bg);
+}
+
+.expect-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 76px;
+}
+
+.expect-item+.expect-item {
+  height: 77px;
+  border-top: 1px solid #e1e1e2;
+}
+
+.expect-item__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--c-white);
+  color: var(--c-dark);
+}
+
+.expect-item__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.expect-item__svg--mobile {
+  display: none;
+}
+
+.expect-item__text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.2;
+}
+
+.expect-item__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--c-dark);
+}
+
+.expect-item__desc {
+  font-size: 14px;
+  color: var(--c-text);
+}
+
+/* Highlighted card (after the webinar) */
+.expect-card--accent {
+  background: var(--c-orange);
+  box-shadow: 8px 42px 52px rgba(181, 63, 0, 0.4);
+}
+
+.expect-card--accent .expect-card__title {
+  color: var(--c-white);
+}
+
+.expect-card--accent .expect-card__list {
+  background: var(--c-white);
+}
+
+.expect-card--accent .expect-item+.expect-item {
+  border-top-color: #e6e6e6;
+}
+
+.expect-card--accent .expect-item__icon {
+  background: #fcf2e8;
+  color: var(--c-orange);
+}
+
+/* ==========================================================================
+   What to expect: tablet / mobile
+   ========================================================================== */
+@media (max-width: 1199px) {
+  .expect {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .expect__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .expect__inner {
+    gap: 24px;
+  }
+
+  .expect__title {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .expect-item__text {
+    gap: 4px;
+  }
+
+  .expect-item__svg--desktop {
+    display: none;
+  }
+
+  .expect-item__svg--mobile {
+    display: block;
+  }
+
+  /* One box: 4px frame, title and compact rows without dividers */
+  .expect-card {
+    padding: 20px;
+    border: 4px solid var(--c-white);
+    background: var(--c-bg);
+  }
+
+  .expect-card__title {
+    height: auto;
+    margin-bottom: 6px;
+    padding: 0;
+  }
+
+  .expect-card__list {
+    padding: 0;
+    background: none;
+  }
+
+  .expect-item,
+  .expect-item+.expect-item {
+    height: auto;
+    padding: 8px 0;
+    border-top: 0;
+  }
+
+  .expect-item__desc {
+    line-height: 1.5;
+  }
+
+  .expect-card--accent {
+    border-color: var(--c-orange);
+    background: var(--c-white);
+  }
+
+  .expect-card--accent .expect-card__title {
+    color: var(--c-dark);
+  }
+}

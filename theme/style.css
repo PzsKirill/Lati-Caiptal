@@ -1,0 +1,14 @@
+/*
+Theme Name: Lati Capital Webinar
+Theme URI: https://lati-capital.com/
+Author: Duck.design
+Author URI: https://duck.design/
+Description: One-page registration landing for the Lati Capital webinar. Hand-coded theme, no page builder. Webinar details, form delivery and analytics are edited in Appearance → Customize → Webinar landing.
+Version: 1.0.0
+Requires at least: 6.3
+Requires PHP: 7.4
+License: Proprietary
+Text Domain: lati
+*/
+
+/* Theme styles live in /style/*.css and are enqueued from inc/setup.php. */

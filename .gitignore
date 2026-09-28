@@ -1,0 +1,21 @@
+# Secrets
+.mcp.json
+.env
+*.env
+
+# Local tooling and internal notes (not for the public repo)
+.claude/
+.agents/
+skills-lock.json
+CLAUDE.md
+
+# Client design references (kept locally)
+design-preview/
+desktop.png
+tablet.png
+mobile*.png
+
+# Misc
+__pycache__/
+*.zip
+node_modules/

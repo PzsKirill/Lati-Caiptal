@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Who this webinar is for (orange section, 2 audience cards)
+   ========================================================================== */
+
+.audience {
+  border-radius: var(--radius-section);
+  background: var(--c-orange);
+}
+
+.audience__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+}
+
+.audience__title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.0417em;
+  color: var(--c-white);
+}
+
+.audience__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.audience-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--c-white);
+}
+
+.audience-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.audience-card__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f4e2cd;
+  color: var(--c-orange);
+}
+
+.audience-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.audience-card__title {
+  margin: 24px 0;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--c-dark);
+}
+
+.audience-card__list {
+  gap: 14px;
+}
+
+.audience-card__media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audience-card__media img {
+  height: 297px;
+  width: auto;
+}
+
+/* Second card: image on the left */
+.audience-card--flip .audience-card__media {
+  order: -1;
+}
+
+/* ==========================================================================
+   Audience: tablet / mobile (cards stacked, image under the text)
+   ========================================================================== */
+@media (max-width: 1199px) {
+  .audience {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .audience__inner {
+    gap: 36px;
+  }
+
+  .audience-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .audience-card--flip .audience-card__media {
+    order: 0;
+  }
+
+  .audience-card__media img {
+    height: 218px;
+  }
+}
+
+@media (max-width: 767px) {
+  .audience {
+    padding: 32px var(--gutter) 16px;
+  }
+
+  .audience__inner {
+    gap: 24px;
+  }
+
+  .headline__copy .headline__title {
+    margin-bottom: 8px;
+  }
+
+  .audience__title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .audience__cards {
+    gap: 16px;
+  }
+
+  .audience-card {
+    padding: 24px;
+  }
+
+  .audience-card__media img {
+    width: 100%;
+    height: auto;
+  }
+}

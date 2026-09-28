@@ -1,0 +1,388 @@
+/* ==========================================================================
+   A simple structured product example (payoff chart with tooltip)
+   ========================================================================== */
+
+.payoff__inner {
+  display: flex;
+  gap: 70px;
+}
+
+.payoff__copy {
+  flex: 0 0 399px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.payoff__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.payoff-step {
+  padding-left: 12px;
+  border-left: 3px solid rgba(217, 119, 16, 0.1);
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+  cursor: default;
+  transition: border-color 0.3s var(--ease);
+}
+
+.payoff-step.is-active {
+  border-left-color: var(--c-orange);
+}
+
+.payoff-step:focus-visible {
+  outline: none;
+  border-left-color: var(--c-orange);
+  background: rgba(217, 119, 16, 0.04);
+}
+
+.payoff__visual {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.payoff__note {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--c-orange);
+}
+
+/* --------------------------------------------------------------------------
+   Chart
+   -------------------------------------------------------------------------- */
+.payoff-chart {
+  --plot-left: 42px;
+  --plot-h: 380px;
+
+  position: relative;
+  height: calc(var(--plot-h) + 22px);
+  font-size: 10px;
+  line-height: 1;
+  color: #626262;
+}
+
+.payoff-chart__grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: var(--plot-h);
+}
+
+.payoff-chart__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.payoff-chart__row span {
+  flex: 0 0 30px;
+}
+
+.payoff-chart__row::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(98, 98, 98, 0.2) 50%, transparent 50%) left bottom / 8px 1px repeat-x;
+}
+
+.payoff-chart__x {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.payoff-chart__x span {
+  flex: 0 0 50px;
+}
+
+.payoff-chart__x span:first-child {
+  flex-basis: 116px;
+  visibility: hidden;
+}
+
+.payoff-chart__x span:nth-child(2) {
+  text-align: center;
+}
+
+.payoff-chart__x span:last-child {
+  text-align: right;
+}
+
+/* Plot overlay: from the end of the y labels to the right edge (+1px, as in the design) */
+.payoff-chart__plot {
+  position: absolute;
+  top: 0;
+  left: var(--plot-left);
+  right: -1px;
+  height: var(--plot-h);
+  cursor: crosshair;
+  touch-action: pan-y;
+  /* a finger slides along the chart, vertical swipes still scroll */
+}
+
+.payoff-chart__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Principal + coupon line: anchored to the right edge of the plot. Its length
+   (--safe-w) is set per breakpoint; on narrow screens it reaches past the
+   barrier into the red zone, as in the design. */
+.payoff-chart__safe {
+  --safe-w: 63.1%;   /* 1440: starts at 36.9% of the plot */
+
+  position: absolute;
+  top: 18.68%;
+  right: 0;
+  width: var(--safe-w);
+  height: 2px;
+  margin-top: -1px;
+  border-radius: 333px;
+  background: #296ebc;
+  pointer-events: none;
+}
+
+/* end points: r 6 + 2px white ring, as the SVG dots */
+.payoff-chart__safe::before,
+.payoff-chart__safe::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  border: 2px solid var(--c-white);
+  border-radius: 50%;
+  background: #296ebc;
+}
+
+.payoff-chart__safe::before {
+  left: -7px;
+}
+
+.payoff-chart__safe::after {
+  right: -7px;
+}
+
+.payoff-chart__label {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #296ebc;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.pf-dot {
+  stroke: var(--c-white);
+  stroke-width: 2;
+}
+
+/* Moving point + tooltip */
+.payoff-chart__point {
+  position: absolute;
+  z-index: 2;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border: 2px solid var(--c-white);
+  border-radius: 50%;
+  background: #bb2e2e;
+  pointer-events: none;
+  transition: left 0.25s var(--ease), top 0.25s var(--ease), background-color 0.25s var(--ease);
+}
+
+.payoff-chart__point.is-safe {
+  background: #296ebc;
+}
+
+.payoff-tip {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  border-radius: 8px;
+  background: #2f2f2f;
+  box-shadow: 12px 20px 32px rgba(47, 47, 47, 0.72);
+  color: var(--c-white);
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  /* Arrow tip sits on the point: 18px right of it, 37.5px above the box top */
+  transform: translate(18px, -37.5px);
+  transition: left 0.25s var(--ease), top 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.payoff-tip::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 31px;
+  width: 7px;
+  height: 13px;
+  background: #2f2f2f;
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+.payoff-tip.is-flipped {
+  transform: translate(calc(-100% - 18px), -37.5px);
+}
+
+.payoff-tip.is-flipped::before {
+  left: auto;
+  right: -7px;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.payoff-tip__title {
+  font-weight: 600;
+}
+
+.payoff-tip__sub {
+  color: #fc5b5b;
+}
+
+.payoff-tip.is-safe .payoff-tip__sub {
+  color: #7fb2ec;
+}
+
+.payoff-chart.is-dragging .payoff-chart__point,
+.payoff-chart.is-dragging .payoff-tip {
+  transition: none;
+}
+
+/* ==========================================================================
+   Payoff: tablet / mobile
+   ========================================================================== */
+@media (max-width: 1199px) {
+  .payoff__inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .payoff__copy {
+    flex: none;
+  }
+
+  .payoff__head {
+    gap: 20px;
+  }
+
+  .payoff-chart__label {
+    font-size: 12px;
+  }
+
+  .payoff-tip {
+    font-size: 12px;
+  }
+
+  /* ~496px long as in the design: just past the barrier on wide tablets,
+     well into the red zone at 768 */
+  .payoff-chart__safe {
+    --safe-w: min(100%, max(496px, calc(63.55% + 16px)));
+  }
+}
+
+@media (max-width: 767px) {
+  .payoff__inner {
+    gap: 24px;
+  }
+
+  .payoff-chart {
+    --plot-h: 205px;
+  }
+
+  .payoff-chart__row span {
+    flex-basis: 24px;
+    font-size: 8px;
+  }
+
+  .payoff-chart__x {
+    font-size: 9px;
+  }
+
+  .payoff-chart__x span:first-child {
+    flex-basis: 60px;
+  }
+
+  .payoff-chart__label {
+    font-size: 8px;
+  }
+
+  /* 83% of the plot, as in the 393 design */
+  .payoff-chart__safe {
+    --safe-w: 83%;
+  }
+
+  .payoff-chart__safe::before,
+  .payoff-chart__safe::after {
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    border-width: 1.5px;
+  }
+
+  .payoff-chart__safe::before {
+    left: -5px;
+  }
+
+  .payoff-chart__safe::after {
+    right: -5px;
+  }
+
+  .payoff-tip {
+    gap: 4px;
+    padding: 10px;
+    font-size: 8px;
+    transform: translate(12px, -19px);
+  }
+
+  .payoff-tip::before {
+    left: -5px;
+    top: 13px;
+    width: 5px;
+    height: 10px;
+  }
+
+  .payoff-tip.is-flipped {
+    transform: translate(calc(-100% - 12px), -19px);
+  }
+
+  .payoff-tip.is-flipped::before {
+    right: -5px;
+  }
+
+  .payoff-chart__point {
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    border-width: 1.5px;
+  }
+
+  .payoff__note {
+    font-size: 13px;
+  }
+}

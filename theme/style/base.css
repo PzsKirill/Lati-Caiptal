@@ -1,0 +1,401 @@
+/* ==========================================================================
+   Base: fonts, design tokens, reset, typography, shared components
+   ========================================================================== */
+
+/* Inter, self-hosted variable font (weights 400–700) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin-italic.woff2") format("woff2");
+}
+
+:root {
+  /* Colors */
+  --c-orange: #d97710;
+  --c-orange-hover: #c2690c;
+  --c-dark: #11182a;
+  --c-dark-hover: #222b40;
+  --c-text: #62656c;
+  --c-nav: #626262;
+  --c-ink: #121212;
+  --c-bg: #f9fafb;
+  --c-bg-alt: #f0f0f0;
+  --c-white: #ffffff;
+
+  /* Layout: content never exceeds 1296px (1440 - 2 x 72) */
+  --content-max: 1296px;
+  --gutter: 72px;
+  --radius-section: 24px;
+  --header-h: 84px;
+  --header-top: 20px;
+
+  /* Type */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-top) + var(--header-h) + 16px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  /* Figma uses Inter's text cut at every size; don't auto-switch to Display */
+  font-optical-sizing: none;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--c-dark);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-orange);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Layout helpers
+   Section backgrounds and cards stretch to 100% width; the content inside
+   sits in .container, capped at 1296px and centered. The parent provides the
+   side padding so the content lines up with the 72px page gutter at 1440. */
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Section shell and heading row
+   -------------------------------------------------------------------------- */
+.section {
+  padding: 104px var(--gutter);
+}
+
+.section--alt {
+  background: var(--c-bg-alt);
+}
+
+/* Heading row: eyebrow + title on the left, lead on the right, bottom-aligned */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+}
+
+.section-head__main {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  min-width: 0;
+}
+
+.section-head__lead {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.section-title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.0455em;
+  color: var(--c-dark);
+}
+
+.section-lead {
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+/* Small rounded number tag ("01") */
+.num-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border-radius: 333px;
+  background: rgba(0, 0, 0, 0.03);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--c-orange);
+}
+
+/* List with orange check marks */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--c-dark);
+}
+
+.check-list svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 1.5px;
+  color: var(--c-orange);
+}
+
+/* --------------------------------------------------------------------------
+   Eyebrow (section label with orange dot)
+   -------------------------------------------------------------------------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.1167em;
+  text-transform: uppercase;
+  color: var(--c-text);
+}
+
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--eyebrow-dot, var(--c-orange));
+}
+
+/* On dark / orange backgrounds */
+.eyebrow--light {
+  color: var(--c-white);
+}
+
+.eyebrow--white-dot {
+  --eyebrow-dot: var(--c-white);
+}
+
+
+/* --------------------------------------------------------------------------
+   Pill button with round arrow icon
+   -------------------------------------------------------------------------- */
+.btn {
+  --btn-bg: var(--c-orange);
+  --btn-bg-hover: var(--c-orange-hover);
+  --btn-icon: 44px;
+  --btn-arrow: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  padding: 4px 4px 4px 28px;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--c-white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transition: background-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.btn:hover {
+  background: var(--btn-bg-hover);
+}
+
+.btn__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--btn-icon);
+  height: var(--btn-icon);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.btn__icon svg {
+  width: var(--btn-arrow);
+  height: var(--btn-arrow);
+  transition: transform 0.35s var(--ease);
+}
+
+.btn:hover .btn__icon svg {
+  transform: rotate(45deg);
+}
+
+.btn--dark {
+  --btn-bg: var(--c-dark);
+  --btn-bg-hover: var(--c-dark-hover);
+}
+
+.btn--sm {
+  --btn-icon: 28px;
+  --btn-arrow: 7.64px;
+  gap: 8px;
+  height: 36px;
+  padding: 4px 4px 4px 16px;
+  font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive: shared tokens and components
+   Tablet layout ≤1199px (design at 768), mobile ≤767px (design at 393)
+   ========================================================================== */
+@media (max-width: 1199px) {
+  :root {
+    --gutter: 36px;
+  }
+
+  .section {
+    padding: 72px var(--gutter);
+  }
+
+  .section-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .section-head__main {
+    gap: 20px;
+  }
+
+  .section-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 16px;
+    --header-top: 0px;
+    --header-h: 72px;
+  }
+
+  .section-head {
+    gap: 16px;
+  }
+
+  .section-head__main {
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.11em;
+  }
+
+  /* Full-width buttons: label left, arrow right */
+  .btn--block-mobile {
+    justify-content: space-between;
+    width: 100%;
+    height: 56px;
+    padding: 0 20px;
+    --btn-icon: 32px;
+    --btn-arrow: 12px;
+  }
+}
